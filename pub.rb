@@ -6,21 +6,14 @@ class Pub
     @name = name
     @till_amount = till_amount
     @drinks = drinks
-    #@stock = {}
-    #for drink in drinks
-    # add drink.name => drink.stock
-    #end
-    #
-
     @foods = foods
     @age_limit = 18 #In UK
-    @drunkenness_limit = drunkenness_limit.to_f
+    @drunkenness_limit = drunkenness_limit
   end
 
   def till_amount
     return @till_amount
   end
-
 
   def takes_money(cash)
     @till_amount += cash

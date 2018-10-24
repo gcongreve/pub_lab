@@ -38,16 +38,13 @@ class PubTest < MiniTest::Test
   def test_till_takes_in_money
     @pub.takes_money(5)
     assert_equal(105, @pub.till_amount)
-
   end
 
   def test_pub_sells_drink
     expected = [@drink_a, @drink_c]
     @pub.sells_drink(@drink_b)
     actual = @pub.drinks
-
     assert_equal(expected, actual)
-
   end
 
   def test_pub_has_drink__true
@@ -92,11 +89,10 @@ class PubTest < MiniTest::Test
     assert_equal(expected, actual)
   end
 
-  def test_pub_sells_food
+  def test_pub_selling_food_removes_from_array
     expected = [@food1]
     @pub.sells_food(@food2)
     actual = @pub.foods
-
     assert_equal(expected, actual)
 
   end

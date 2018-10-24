@@ -46,11 +46,8 @@ class Customer
     if can_afford?(drink.price) && pub.has_drink?(drink) && is_legal?(pub) && !too_drunk?(pub)
 
       spends_money(drink.price)
-
       pub.takes_money(drink.price)
-
       pub.sells_drink(drink)
-
       downs_drink(drink)
 
     end
@@ -58,15 +55,11 @@ class Customer
 
   def buys_food(pub, food)
     if can_afford?(food.price) && pub.has_food?(food)
-
       spends_money(food.price)
       pub.takes_money(food.price)
       pub.sells_food(food)
       eats_food(food)
-
     end
-
-
   end
 
 end

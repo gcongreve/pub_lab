@@ -20,7 +20,6 @@ class CustomerTest < MiniTest::Test
     @drinks = [@drink1, @drink2, @drink3]
 
     @pub1 = Pub.new("The Lamb And Flag", 50, @drinks, @foods, 100)
-
     @strictpub = Pub.new("The Nun And Hammer", 100, @drinks, [@food1], 4.5)
 
     @customer1 = Customer.new("Yuri", 300, 35)
@@ -30,12 +29,7 @@ class CustomerTest < MiniTest::Test
   end
 
   def test_customer_name
-
-    expected = "Yuri"
-    actual = @customer1.name
-
-    assert_equal(expected, actual)
-
+    assert_equal("Yuri", @customer1.name)
   end
 
   # def test_customer_wallet_amount
@@ -123,32 +117,23 @@ class CustomerTest < MiniTest::Test
   end
 
   def test_check_id
-    expected = 17
-    actual = @underage.check_id
-
-    assert_equal(expected, actual)
-
+    assert_equal(17, @underage.check_id)
   end
 
   def test_is_legal__true
     expected = true
     actual = @customer1.is_legal?(@pub1)
-
     assert_equal(expected, actual)
-
   end
 
   def test_is_legal__false
     expected = false
     actual = @underage.is_legal?(@pub1)
-
     assert_equal(expected, actual)
   end
 
   def test_customer_initial_drunkenness
-    expected = 0
-    actual = @customer1.drunkenness
-    assert_equal(expected, actual)
+    assert_equal(0, @customer1.drunkenness)
   end
 
   def test_down_drink
@@ -180,45 +165,25 @@ class CustomerTest < MiniTest::Test
   end
 
   def test_too_drunk_to_serve
-    expected = 105
-
-    # Customer buys wine from strict pub. Should work
+    expected = 105 #money in till from 1 drink but not 2
     @customer1.buys_drink(@strictpub, @drink2)
-    # Customer buys sambuca from strict pub. Should be too drunk!
     @customer1.buys_drink(@strictpub, @drink3)
-
     actual = @strictpub.till_amount
-
     assert_equal(expected, actual)
-
-
   end
 
   def test_customer_eats_food_reduces_drunk
-
-    expected = 0.1
-
     # Yuri drinks wine. Drunknness should be 4.6
     @customer1.downs_drink(@drink2)
     # Yuri eats jelly. Drunknness should be 0.1
     @customer1.eats_food(@food2)
-
-    actual = @customer1.drunkenness
-
-    assert_equal(expected, actual)
-
+    assert_equal(0.1, @customer1.drunkenness)
   end
 
   def test_customer_eats_food_no_drink
-
-    expected = 0
-
+    #shouldn't go below 0 drunkenness
     @customer1.eats_food(@food2)
-
-    actual = @customer1.drunkenness
-
-    assert_equal(expected, actual)
-
+    assert_equal(0, @customer1.drunkenness)
   end
 
   def test_customer_buys_food__available

@@ -9,7 +9,7 @@ class FoodTest < MiniTest::Test
     @food2 = Food.new("jelly", 6, 4.5)
   end
 
-  def test_food_has_name_and_price_and_rej
+  def test_food_has_name_and_price_and_rejuv
     assert_equal("chips", @food1.name)
     assert_equal(6, @food2.price)
     assert_equal(1.3, @food1.rejuvenation_level)
