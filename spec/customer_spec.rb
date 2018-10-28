@@ -70,33 +70,23 @@ class CustomerTest < MiniTest::Test
   end
 
   def test_customer_can_afford__true
-
     expected = true
     actual = @customer1.can_afford?(5)
-
     assert_equal(expected, actual)
-
   end
 
   def test_customer_can_afford__false
-
     expected = false
     actual = @customer2.can_afford?(20)
-
     assert_equal(expected, actual)
 
   end
 
   def test_customer_buys_drink__poor
-
     expected = 50
-
     @customer2.buys_drink(@pub1, @drink3)
-
     actual = @pub1.till_amount
-
     assert_equal(expected, actual)
-
   end
 
   def test_drink_not_in_stock
@@ -104,16 +94,13 @@ class CustomerTest < MiniTest::Test
     @customer1.buys_drink(@pub1, @drink4)
     actual = @pub1.till_amount
     assert_equal(expected, actual)
-
   end
 
   def test_underage_customer
-
     expected = 50
     @underage.buys_drink(@pub1, @drink3)
     actual = @pub1.till_amount
     assert_equal(expected, actual)
-
   end
 
   def test_check_id
@@ -153,15 +140,11 @@ class CustomerTest < MiniTest::Test
   def test_too_drunk?
     expected_drunkenness = 4.6
     expected_outcome = true
-
     @customer1.buys_drink(@strictpub, @drink2)
-
     actual_drunkenness = @customer1.drunkenness
     actual_outcome = @customer1.too_drunk?(@strictpub)
-
     assert_equal(expected_drunkenness, actual_drunkenness)
     assert_equal(expected_outcome, actual_outcome)
-
   end
 
   def test_too_drunk_to_serve
